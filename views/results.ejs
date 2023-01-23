@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>
+    <%= electionName %> Results
+  </title>
+  <style>
+    h3{text-align: center;}
+  </style>
+</head>
+<body >
+  <nav class="p-6 bg-black">
+    <div class="container flex flex-wrap items-center justify-between mx-auto">
+      <p class="flex items-center">
+        <span class="self-center text-xl font-semibold whitespace-nowrap text-white">Online Voting</span>
+      </p>
+    </div>
+  </nav>
+    <h3 class="text-4xl my-4 font-medium"><%= electionName %> Results</h3>
+    <div class="my-6 mx-10 ">
+        <h4 class="text-4xl  font-semibold">Questions :</h4>
+        <br>
+        <% for (var i=0; i<Questions.length; i++) { %>
+          <div><p class="text-3xl"><%= i+1 %>. <%= Questions[i].questionname %></p>
+           <p class="text-black-600 text-xl">Description : <%= Questions[i].description %></p>
+           <div class="pt-6 pl-4 flex flex-col gap-3">
+             <% for (var j=0; j<options[i].length; j++) { %>
+                <% if (optionsCount[i][j]===winners[i]) {%>
+                  <span>->Winner is "<%= options[i][j].option %>" with highest votes <%= optionsCount[i][j] %></span>
+                        <% }%>
+                <div class="flex gap-1" >
+               <p class="flex items-center gap-2 text-xl"><%= j+1 %>. <%= options[i][j].option %>: <hr width="<%=optionsCount[i][j]%>5%" style="height:30px; border:none; color:blue; background-color:blue;" /><p class="text-green-700 text-xl"><%= optionsCount[i][j]%> votes</p></p></div>
+             <% } %>
+         </div>
+       </div>
+     <% } %>
+    </div>
+</body>
+</html>
