@@ -69,7 +69,7 @@ npm test
 
 ## Live Application Url
 
-https://vineeth-voting-application.onrender.com
+https://wd2final.onrender.com
 
 ## Demo Video
 
